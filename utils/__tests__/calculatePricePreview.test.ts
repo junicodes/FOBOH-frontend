@@ -4,12 +4,8 @@
  * Matches backend calculation logic
  */
 
-import {
-  calculatePricePreview,
-  calculateBatchPricePreview,
-  validateCalculationParams,
-  PricePreviewParams,
-} from "../calculatePricePreview";
+import { describe, it, expect } from "@jest/globals";
+import { calculatePricePreview, calculateBatchPricePreview, validateCalculationParams, PricePreviewParams } from "../calculatePricePreview";
 
 describe("calculatePricePreview", () => {
   describe("Fixed Adjustment - Increase", () => {
