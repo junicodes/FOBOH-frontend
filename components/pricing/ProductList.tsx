@@ -6,9 +6,9 @@
 
 "use client";
 
-import * as React from "react";
 import { Checkbox } from "@/components/ui/Checkbox";
-import type { Product } from "@/app/api/products";
+import { Product } from "@/app/api/interfaces";
+
 
 export interface ProductListProps {
   // Products data

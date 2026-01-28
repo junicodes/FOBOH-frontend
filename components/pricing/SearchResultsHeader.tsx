@@ -6,7 +6,6 @@
 
 "use client";
 
-import * as React from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
 
 export interface SearchResultsHeaderProps {
