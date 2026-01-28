@@ -10,12 +10,9 @@ import {
   deletePricingProfile,
   getPricingProfileById,
   getAllPricingProfiles,
-  type PricingProfile,
-  type CreatePricingProfileRequest,
-  type UpdatePricingProfileRequest,
-  type PricingTableItem,
 } from "@/app/api/pricing-profiles";
-import { validatePricingProfileForm, type PricingProfileFormData } from "@/utils/pricingProfileValidation";
+import { validatePricingProfileForm, PricingProfileFormData } from "@/utils/pricingProfileValidation";
+import { PricingProfile, PricingTableItem } from "@/app/api/interfaces";
 
 export interface CreatePricingProfileResult {
   success: boolean;
