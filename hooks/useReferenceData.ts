@@ -8,13 +8,9 @@ import {
   getAllCategories,
   getAllSubCategories,
   getAllSegments,
-  getAllSkus,
-  type Brand,
-  type Category,
-  type SubCategory,
-  type Segment,
-  type Sku,
+  getAllSkus
 } from "@/app/api/products";
+import { Brand, Category, SubCategory, Segment, Sku } from "@/app/api/interfaces";
 
 export interface UseReferenceDataReturn {
   brands: Brand[];
