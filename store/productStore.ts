@@ -3,7 +3,7 @@
  * Global state for products that can be updated from API calls
  */
 import { create } from "zustand";
-import type { Product } from "@/app/api/products";
+import { Product } from "@/app/api/interfaces";
 
 interface ProductState {
   products: Product[];
