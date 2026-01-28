@@ -122,7 +122,7 @@ export default function PricingSetupPage() {
 
   return (
     <div className="min-h-screen bg-slate-white">
-      <div className="mx-auto flex min-h-screen max-w-[1920px]">
+      <div className="mx-auto flex min-h-screen w-full 2xl:max-w-[2250px]">
         {/* Sidebar */}
         <SidebarNav />
 

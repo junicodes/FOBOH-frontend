@@ -16,6 +16,7 @@ import {
 } from "@/app/api/pricing-profiles";
 import { PricingProfile } from "@/app/api/interfaces";
 import { useRouter } from "next/navigation";
+import Spinner from "@/components/layout/Spinner";
 
 export default function PricingProfilesPage() {
   const router = useRouter();
@@ -65,7 +66,7 @@ export default function PricingProfilesPage() {
 
   return (
     <div className="min-h-screen bg-slate-white">
-      <div className="mx-auto flex min-h-screen max-w-[1920px]">
+      <div className="mx-auto flex min-h-screen w-full 2xl:max-w-[2250px]">
         {/* Sidebar */}
         <SidebarNav />
 
@@ -96,29 +97,7 @@ export default function PricingProfilesPage() {
 
               {/* Profiles List */}
               {isLoading ? (
-                <div className="flex items-center justify-center py-12">
-                  <svg
-                    className="h-8 w-8 animate-spin text-slate-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  <p className="ml-3 text-sm text-slate-500">Loading pricing profiles...</p>
-                </div>
+               <Spinner />
               ) : isError ? (
                 <div className="rounded-lg border border-red-200 bg-red-50 p-4">
                   <p className="text-sm text-red-800">

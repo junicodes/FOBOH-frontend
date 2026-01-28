@@ -33,15 +33,18 @@ npm install
 
 2. Set up environment variables (create `.env.local` file):
 ```env
-# Backend API base URL (dev)
+# Backend API base URL (local development)
 NEXT_PUBLIC_API_BASE_URL=http://localhost:4001
 ```
 
 For **production on Vercel (frontend project env)** set:
 
 ```env
+# Backend API base URL (production)
 NEXT_PUBLIC_API_BASE_URL=https://foboh-backend-api.vercel.app
 ```
+
+> **Note:** The backend uses PostgreSQL in production and SQLite for local development. Ensure the backend is properly configured with the correct database before connecting the frontend.
 
 3. Start the development server:
 ```bash
