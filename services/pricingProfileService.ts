@@ -12,7 +12,7 @@ import {
   getAllPricingProfiles,
 } from "@/app/api/pricing-profiles";
 import { validatePricingProfileForm, PricingProfileFormData } from "@/utils/pricingProfileValidation";
-import { PricingProfile, PricingTableItem } from "@/app/api/interfaces";
+import { CreatePricingProfileRequest, PricingProfile, PricingTableItem, UpdatePricingProfileRequest } from "@/app/api/interfaces";
 
 export interface CreatePricingProfileResult {
   success: boolean;
