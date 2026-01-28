@@ -5,8 +5,9 @@
  */
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { getAllProducts, type Product, type ProductFilters } from "@/app/api/products";
+import { getAllProducts } from "@/app/api/products";
 import { useProductStore } from "@/store/productStore";
+import { Product, ProductFilters } from "@/app/api/interfaces";
 
 export interface UseProductsReturn {
   products: Product[];
