@@ -154,10 +154,10 @@ export function PricingTable({ data, isLoading = false, onRefresh }: PricingTabl
                     const sign = row.incrementType === "decrease" ? "-" : "+";
                     if (row.adjustmentType === "dynamic") {
                       // Show as percentage for dynamic adjustments
-                      return `${sign}${row.originalAdjustmentValue.toFixed(2)}%`;
+                      return `${sign}  ${row.originalAdjustmentValue.toFixed(2)}%`;
                     } else {
                       // Show as dollar amount for fixed adjustments
-                      return `${sign}$${row.originalAdjustmentValue.toFixed(2)}`;
+                      return `${sign}  ${row.originalAdjustmentValue.toFixed(2)}`;
                     }
                   }
                 })()}
