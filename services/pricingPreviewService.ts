@@ -13,8 +13,11 @@ export interface PricingPreviewTableItem {
   sku: string;
   category: string;
   wholesalePrice: number;
-  adjustment: number;
+  adjustment: number; // Calculated adjustment amount
   newPrice: number;
+  adjustmentType: "fixed" | "dynamic"; // Type of adjustment
+  originalAdjustmentValue: number; // Original adjustment value (percentage for dynamic, dollar for fixed)
+  incrementType: "increase" | "decrease"; // Increase or decrease
 }
 
 export interface GeneratePreviewParams {
@@ -70,6 +73,9 @@ export function generatePricingPreview(
         wholesalePrice: product.globalWholesalePrice || 0,
         adjustment: 0,
         newPrice: product.globalWholesalePrice || 0,
+        adjustmentType,
+        originalAdjustmentValue: adjustmentValueNum,
+        incrementType,
       };
     }
 
@@ -81,6 +87,9 @@ export function generatePricingPreview(
       wholesalePrice: calculated.basePrice,
       adjustment: calculated.adjustment,
       newPrice: calculated.newPrice,
+      adjustmentType,
+      originalAdjustmentValue: adjustmentValueNum,
+      incrementType,
     };
   });
 }

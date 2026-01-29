@@ -13,8 +13,11 @@ export interface PricingTableRow {
   sku: string;
   category: string;
   wholesalePrice: number;
-  adjustment: number;
+  adjustment: number; // Calculated adjustment amount (for reference, not displayed)
   newPrice: number;
+  adjustmentType?: "fixed" | "dynamic"; // Type of adjustment
+  originalAdjustmentValue?: number; // Original adjustment value (percentage for dynamic, dollar for fixed)
+  incrementType?: "increase" | "decrease"; // Increase or decrease
 }
 
 export interface PricingTableProps {
@@ -144,7 +147,20 @@ export function PricingTable({ data, isLoading = false, onRefresh }: PricingTabl
                 ${row.wholesalePrice.toFixed(2)}
               </td>
               <td className="border-2 border-green-400 px-4 py-3 text-slate-700 bg-[#51b39c]/10">
-                {row.adjustment < 0 ? "-" : "+"}$&nbsp;&nbsp;{Math.abs(row.adjustment).toFixed(2)}
+                {(() => {
+
+                  // If we have adjustment type and original value, use those
+                  if (row.adjustmentType && row.originalAdjustmentValue !== undefined) {
+                    const sign = row.incrementType === "decrease" ? "-" : "+";
+                    if (row.adjustmentType === "dynamic") {
+                      // Show as percentage for dynamic adjustments
+                      return `${sign}${row.originalAdjustmentValue.toFixed(2)}%`;
+                    } else {
+                      // Show as dollar amount for fixed adjustments
+                      return `${sign}$${row.originalAdjustmentValue.toFixed(2)}`;
+                    }
+                  }
+                })()}
               </td>
               <td className="px-4 py-3 text-left font-medium text-slate-900">
                 ${row.newPrice.toFixed(2)}
