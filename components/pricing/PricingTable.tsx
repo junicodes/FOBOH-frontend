@@ -157,7 +157,7 @@ export function PricingTable({ data, isLoading = false, onRefresh }: PricingTabl
                       return `${sign}  ${row.originalAdjustmentValue}%`;
                     } else {
                       // Show as dollar amount for fixed adjustments
-                      return `${sign}  ${row.originalAdjustmentValue.toFixed(2)}`;
+                      return `${sign}$  ${row.originalAdjustmentValue.toFixed(2)}`;
                     }
                   }
                 })()}
