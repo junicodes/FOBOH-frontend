@@ -101,7 +101,7 @@ export function PricingTable({ data, isLoading = false, onRefresh }: PricingTabl
               Category
             </th>
             <th className="px-4 py-3 text-left font-medium text-slate-400">
-              Global Wholesale Price
+             Based On Price
             </th>
             <th className="px-4 py-3 text-left font-medium text-slate-400 ">
               Adjustment
