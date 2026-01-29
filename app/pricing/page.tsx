@@ -59,9 +59,9 @@ export default function PricingProfilesPage() {
   const formatAdjustment = (profile: PricingProfile): string => {
     const sign = profile.incrementType === "increase" ? "+" : "-";
     if (profile.adjustmentType === "fixed") {
-      return `${sign}$${profile.adjustmentValue.toFixed(2)}`;
+      return `${sign}  $${profile.adjustmentValue.toFixed(2)}`;
     }
-    return `${sign}${profile.adjustmentValue}%`;
+    return `${sign}  ${profile.adjustmentValue}%`;
   };
 
   return (
