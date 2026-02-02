@@ -45,8 +45,8 @@ export function validateCalculationParams(params: PricePreviewParams): string | 
     return "Base price must be a valid positive number";
   }
 
-  // Validate adjustment value
-  if (isNaN(adjustmentValue) || adjustmentValue < 0) {
+  // Validate adjustment value (must be positive, not zero)
+  if (isNaN(adjustmentValue) || adjustmentValue <= 0) {
     return "Adjustment value must be a valid positive number";
   }
 

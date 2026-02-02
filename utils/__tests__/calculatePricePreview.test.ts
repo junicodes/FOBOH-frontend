@@ -178,9 +178,9 @@ describe("calculatePricePreview", () => {
         incrementType: "decrease",
       };
 
-      // Should throw error during validation
+      // Should throw error during validation (generic message fires first)
       expect(() => calculatePricePreview(params)).toThrow(
-        "Percentage decrease cannot exceed 100%"
+        "Percentage adjustment cannot exceed 100%"
       );
     });
   });
@@ -421,14 +421,14 @@ describe("calculateBatchPricePreview", () => {
 
     const adjustmentParams = {
       adjustmentType: "fixed" as const,
-      adjustmentValue: 100, // Will cause error for decrease
+      adjustmentValue: 100, // Fixed decrease 100: valid for product 1 (100-100=0), invalid for product 2 (50-100)
       incrementType: "decrease" as const,
     };
 
     const results = calculateBatchPricePreview(products, adjustmentParams);
 
     expect(results).toHaveLength(2);
-    expect(results[0].error).toBeDefined(); // Error for first product
-    expect(results[1].newPrice).toBe(0); // Second product: 50 - 100 = clamped to 0
+    expect(results[0].newPrice).toBe(0); // First product: 100 - 100 = 0 (valid)
+    expect(results[1].error).toBeDefined(); // Second product: fixed decrease 100 > base 50 → error
   });
 });

@@ -236,6 +236,8 @@ export default function PricingProfileViewEditPage() {
     );
   }
 
+  console.log(profile?.pricingTable, "hello")
+
   // Always show preview table when editing, or show saved table if no changes
   const displayPricingTable = previewPricingTable.length > 0 ? previewPricingTable : (profile?.pricingTable || []);
 
