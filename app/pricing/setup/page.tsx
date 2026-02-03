@@ -25,6 +25,7 @@ import {
   usePricingProfileSubmission,
   useModalState,
 } from "../component-functions";
+import { useProducts } from "@/hooks";
 
 export default function PricingSetupPage() {
   const router = useRouter();

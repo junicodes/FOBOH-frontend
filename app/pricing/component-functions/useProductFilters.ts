@@ -16,6 +16,27 @@ export function useProductFilters() {
   const [selectedBrand, setSelectedBrand] = React.useState<string>("");
   const [selectedSku, setSelectedSku] = React.useState<string>("");
 
+  // Load all products on mount (no filters) - stores in Zustand
+  const { refetch: refetchAllProducts } = useProducts({ enabled: false });
+
+  React.useEffect(() => {
+    // Load all products on initial mount
+    refetchAllProducts();
+  }, [refetchAllProducts]);
+
+  // Fetch reference data (brands, categories, sub-categories, segments, skus)
+  const {
+    brands,
+    categories,
+    subCategories,
+    segments,
+    skus,
+    isLoading: isLoadingReferenceData,
+  } = useReferenceData();
+
+  // Combined loading state
+  const isLoadingDropdowns = isLoadingReferenceData;
+
   // Debounce search input
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,29 +67,8 @@ export function useProductFilters() {
     return Object.keys(filterObj).length > 0 ? filterObj : undefined;
   }, [searchQuery, selectedCategory, selectedSubCategory, selectedSegment, selectedBrand, selectedSku]);
 
-  // Load all products on mount (no filters) - stores in Zustand
-  const { refetch: refetchAllProducts } = useProducts({ enabled: false });
-
-  React.useEffect(() => {
-    // Load all products on initial mount
-    refetchAllProducts();
-  }, [refetchAllProducts]);
-
   // Fetch products from API with filters - this updates Zustand store
   const { products, isLoading: isLoadingProducts } = useProducts({ filters });
-
-  // Fetch reference data (brands, categories, sub-categories, segments, skus)
-  const {
-    brands,
-    categories,
-    subCategories,
-    segments,
-    skus,
-    isLoading: isLoadingReferenceData,
-  } = useReferenceData();
-
-  // Combined loading state
-  const isLoadingDropdowns = isLoadingReferenceData;
 
   return {
     // Filter state
